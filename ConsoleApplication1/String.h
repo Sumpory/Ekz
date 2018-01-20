@@ -20,13 +20,14 @@ public:
 	void clear(); // очистка строки 
 	void cut(int l, int r); //очистить с l по r ?? 
 };
+
 void string::cut(int l, int r) //позици€, количество 
 {
 	if (l >= 0 && l + r < size) {
 		for (int i = l; i + r < len; i++) {
 			str[i] = str[i + r];
 		}
-		for (int i = l + r + 1; str[i]; i++) {
+		for (int i = l + r + 2; str[i] && i < size; i++) {
 			str[i] = 0;
 		}
 		len -= r;
@@ -34,6 +35,7 @@ void string::cut(int l, int r) //позици€, количество
 	else
 		std::cout << "Ќеверные введЄнные данные (выход за пределы строки)";
 }
+
 string::string(const char*a)
 {
 	while (a[len])
@@ -49,6 +51,7 @@ string::string(std::string a)
 		str[i] = a[i];
 	}
 }
+
 void string::add(const char* a)
 {
 	int i = 0;
@@ -59,6 +62,7 @@ void string::add(const char* a)
 	}
 	len += i;
 }
+
 void string::clear()
 {
 	for (int i = 0; i < len; i++) {

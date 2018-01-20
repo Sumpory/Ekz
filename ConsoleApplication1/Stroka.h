@@ -8,15 +8,18 @@ class stroka
 {
 public:
 	int size = 1024; // Ограничение длинны строки
-	char *str = new char[size]; // Строка 
+	char *str; // Строка 
 	int len = 0; // Изначальная длинна строки 
-	stroka() {} 
+	stroka() 
+	{
+		str = new char[size];
+	} 
 	~stroka() 
 	{ 
 		delete[] str; // Деконструктор, освобождаем память
 	}
-	stroka(const char*a); // конструктор stroka a = "stroka"; 
-	stroka(std::string a);
+	stroka(const char*a); // Конструктор stroka из массива char; 
+	stroka(std::string a); // Копирующий из std
 	void add(const char* a); // Заполнение строки
 	void clear(); // Очистка строки полностью
 	void cut(int l, int r); // Удаление символов с l по r
@@ -101,5 +104,4 @@ void stroka::clear()
 			str[i] = 0;
 		}
 		len = 0;
-
 	}
